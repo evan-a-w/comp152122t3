@@ -65,7 +65,7 @@ fn: # leaf function, no need to push and pop $ra (we dont change $ra with a jal)
 
 
 # FOLLOW THESE RULES AND UR FINE
-# if we use jal, push and pop $ra
+# if we use jal, push and pop $ra (if we use a function within our function)
 # if we need a value to be the same after a function call, use the next $s register (starting from 0), and push and pop this
 # IF NOT $S REGISTER, NEVER ASSUME THE VALUE WILL STAY THE SAME AFTER A FUNCTION CALL (this is how we get bugs)
 
@@ -85,6 +85,25 @@ prologue:
 	pop	$t1
 	pop	$t0	# restore $t0
 
+	push	$t0	# save $t0
+	jal	fn # may overwrite $t0
+	pop	$t0	# restore $t0
+
 epilogue:
 	pop	$ra
+	jr	$ra
+
+# THIS ALSO WORKS
+alternate:
+prologue:
+	li	$t0, 1
+	li	$t1, 2
+
+	li	$s0, 0
+
+	push	$ra
+	jal	fn # may overwrite $t0
+	pop	$ra
+
+epilogue:
 	jr	$ra
