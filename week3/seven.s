@@ -23,7 +23,6 @@ add_42:
 	sw	$t1, numbers($t2) # numbers[i] = $t1
 
 dont_add:
-
 	add	$t0, $t0, 1 # i++;
 	b loop
 end:

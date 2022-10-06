@@ -40,6 +40,7 @@ lw	$t0, numbers($t2)
 # 1 2 3
 # 4 5 6
 # works as 1 2 3 4 5 6
+
 # int arr[2][3]; rows are stored sequentially in memory
 # arr[1][1] = 1;
 # arr + (1 * 3 + 1) * 4
