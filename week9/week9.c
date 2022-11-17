@@ -21,7 +21,7 @@ struct other_stat {
     mode_t st_mode;       /* protection - unsigned 32 bit integer */
     // rwx is encoded as three bits 111 (three octal digits for all permissions)
     // 777             x        
-    // rwxrwxrwx      111 111 111
+    // drwxrwxrwx      111 111 111
     // 0  1  2        876 543 210
     // st.st_mode & 0b10 ==> if its publically writable
     // S_IS_OWRIT(st.st_mode) (something like this - can't remember)

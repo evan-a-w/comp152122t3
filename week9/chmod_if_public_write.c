@@ -22,6 +22,12 @@ void make_no_other_perms(char *filename) {
         perror(filename);
         exit(1);
     }
+
+    if (S_ISDIR(st.st_mode)) {
+        // set the character to d
+    } else {
+        // set the character to -
+    }
 }
 
 void change_perms(char *filename) {
